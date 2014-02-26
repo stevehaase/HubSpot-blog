@@ -8,11 +8,12 @@ After applying and saving changes make sure to remove Temporary Internet files f
 */
 
 #suggest_box {
-    /* === upPrev Container === */
+    /* === Suggest_Box Container === */
+    opacity: 0;
     text-align: left;
     background-color: #fff;
     bottom:0px; /* distance from window bottom edge */
-
+    right: 0px;
     position:fixed;
     z-index:10000000;    
     width: 360px;
@@ -26,6 +27,12 @@ After applying and saving changes make sure to remove Temporary Internet files f
     filter: progid:DXImageTransform.Microsoft.Shadow(Color=#cccccc, direction=270, strength=7);
     _position: absolute;
     _top: 0;
+}
+
+@media screen and (max-width: 400px){
+    #suggest_box{
+        width: 150px;
+    }   
 }
 
 #suggest_box h6 {
@@ -93,11 +100,11 @@ After applying and saving changes make sure to remove Temporary Internet files f
     border: none;
     padding: 0;
     position: absolute;
-    top: 5px;
-    right: 5px;
-    width: 13px;
-    height: 13px;
-    background: #fff url('close_window.gif') no-repeat 0 0;
+    top: 9px;
+    right: 9px;
+    width: 19px;
+    height: 19px;
+    background: #fff url('http://cdn2.hubspot.net/hub/161221/file-539877387-gif/close_window.gif') no-repeat 0 0;
     text-indent: -999em;
     overflow: hidden;
     cursor: pointer;

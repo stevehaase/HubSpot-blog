@@ -39,6 +39,7 @@ onscroll = function() {
     }
 };
 
+
 var closeMe = document.getElementsByTagName("button");
 closeMe[0].onclick = function () {
             var popBox = document.getElementById("suggest_box");
