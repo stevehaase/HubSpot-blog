@@ -1,21 +1,10 @@
-/*
-Helpful links:
-    Text: http://www.w3schools.com/CSS/css_text.asp
-    Fonts: http://www.w3schools.com/CSS/css_font.asp
-    Background: http://www.w3schools.com/CSS/css_background.asp
-
-After applying and saving changes make sure to remove Temporary Internet files for you browser. Another way it may still using previously cached version of a stylesheet.
-*/
-
 #suggest_box {
-    /* === Suggest_Box Container === */
-    opacity: 0;
     text-align: left;
     background-color: #fff;
-    bottom:0px; /* distance from window bottom edge */
+    bottom: 0px;
     right: 0px;
-    position:fixed;
-    z-index:10000000;    
+    position: fixed;
+    z-index: 100000;    
     width: 360px;
     padding: 10px 20px 10px 10px;
     border-top: 2px solid #000;
@@ -23,10 +12,25 @@ After applying and saving changes make sure to remove Temporary Internet files f
     -moz-box-shadow: 0 4px 10px #666;
     -webkit-box-shadow: 0 4px 10px #666;
     box-shadow: 0 4px 10px #666;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Color=#cccccc, direction=270, strength=7)";
-    filter: progid:DXImageTransform.Microsoft.Shadow(Color=#cccccc, direction=270, strength=7);
-    _position: absolute;
-    _top: 0;
+
+    opacity: 0;
+
+    -webkit-transition: opacity 500ms;
+    -moz-transition: opacity 500ms;
+    transition: opacity 500ms;
+
+    // We need to actually remove it from the page when it's not
+    // visible or animating, because otherwise (if it was just opacity 0)
+    // you wouldn't be able to click on anything below it on the page.
+    display: none;
+}
+
+#suggest_box.show {
+    opacity: 1;
+}
+
+#suggest_box.animating {
+    display: block;
 }
 
 @media screen and (max-width: 400px){
@@ -40,11 +44,11 @@ After applying and saving changes make sure to remove Temporary Internet files f
     text-transform: uppercase;
     font-size: 10px;
     font-weight: bold;
-    font-family: arial,helvetica,sans-serif;
+    font-family: arial, helvetica, sans-serif;
     color: inherit;
     
-    margin:0 0 5px 0;
-    padding:0;   
+    margin: 0 0 5px 0;
+    padding: 0;   
 }
 
 #suggest_box h6 a {
@@ -60,20 +64,20 @@ After applying and saving changes make sure to remove Temporary Internet files f
 #suggest_box h6 .num {
     /* === "(1 of 5 ARTICLES)" === */
     font-size: inherit;
-    font-weight:normal;
+    font-weight: normal;
     font-family: inherit;
     color:#888;
 }
 
 #suggest_box .suggest_excerpt {
     /* === Container for Title, Thumbnail and Excerpt === */
-    text-align:justify;
+    text-align: justify;
 }
 
 #suggest_box .suggest_excerpt p {
     /* === Excerpt === */
-    overflow:hidden;
-    margin:0
+    overflow: hidden;
+    margin: 0;
 }
 
 #suggest_box .suggest_excerpt p a {
@@ -90,8 +94,8 @@ After applying and saving changes make sure to remove Temporary Internet files f
 
 #suggest_box .suggest_thumb {
     /* === Thumbnail Image === */
-    float:left;
-    margin:5px 20px 0 0;
+    float: left;
+    margin: 5px 20px 0 0;
     border: 0;
 }
 
