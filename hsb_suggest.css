@@ -20,11 +20,20 @@
     -webkit-transition: opacity 500ms;
     -moz-transition: opacity 500ms;
     transition: opacity 500ms;
+
+    // We need to actually remove it from the page when it's not
+    // visible or animating, because otherwise (if it was just opacity 0)
+    // you wouldn't be able to click on anything below it on the page.
+    display: none;
 }
 
 #suggest_box.show {
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     opacity: 1;
+}
+
+#suggest_box.animating {
+    display: block;
 }
 
 @media screen and (max-width: 400px){

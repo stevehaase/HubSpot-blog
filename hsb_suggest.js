@@ -1,6 +1,19 @@
 (function(){
     
-    var appended = false;
+    var hide = function() {
+        var popBox = document.getElementById("suggest_box");
+        popBox.className = popBox.className.replace(/(^|\b)show(\b|$)/, ' ');
+
+        setTimeout(function(){
+            // When the animation is done, we can remove this class:
+            popBox.className = popBox.className.replace(/(^|\b)animating(\b|$)/, ' ');
+        }, 500);
+    };
+    var show = function() {
+        var popBox = document.getElementById("suggest_box");
+        popBox.className += ' show animating';
+    };
+
     var onscroll = function() {
         var scrollSpot = document.documentElement.scrollTop || document.body.scrollTop;
         if (document.documentElement.clientWidth > 300) {
@@ -11,27 +24,11 @@
         
         var popBox = document.getElementById("suggest_box");
         if (scrollSpot > scrollPerc) {
-            popBox.className += ' show';
+            show();
         } else {
-            popBox.className = popBox.className.replace(/(^|\b)show(\b|$)/, ' ');
+            hide();
         }
     };
             
-    
-    var closeMe = document.getElementsByTagName("button");
-    closeMe[0].onclick = function () {
-        var popBox = document.getElementById("suggest_box");
-        var x = 10
-        
-        function slowLoop2(){
-            if (x > -1){
-                popBox.style.opacity=x*0.1;      
-                x--;
-                setTimeout(slowLoop2, 50);
-            }
-        }
-        slowLoop2();
-        appended = true;
-    };
-    
+    document.querySelector("#suggest_box button").onclick = hide;
 })();
