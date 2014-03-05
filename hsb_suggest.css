@@ -13,8 +13,6 @@
     -webkit-box-shadow: 0 4px 10px #666;
     box-shadow: 0 4px 10px #666;
 
-    // For IE8:
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     opacity: 0;
 
     -webkit-transition: opacity 500ms;
@@ -28,7 +26,6 @@
 }
 
 #suggest_box.show {
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     opacity: 1;
 }
 

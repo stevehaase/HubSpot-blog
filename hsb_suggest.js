@@ -1,34 +1,37 @@
-(function(){
+if (document.addEventListener){
+    // Not IE8
     
-    var hide = function() {
+    document.addEventListener('DOMContentLoaded', function(){
         var popBox = document.getElementById("suggest_box");
-        popBox.className = popBox.className.replace(/(^|\b)show(\b|$)/, ' ');
 
-        setTimeout(function(){
-            // When the animation is done, we can remove this class:
-            popBox.className = popBox.className.replace(/(^|\b)animating(\b|$)/, ' ');
-        }, 500);
-    };
-    var show = function() {
-        var popBox = document.getElementById("suggest_box");
-        popBox.className += ' show animating';
-    };
+        var hide = function() {
+            popBox.className = popBox.className.replace(/(^|\b)show(\b|$)/, ' ');
 
-    var onscroll = function() {
-        var scrollSpot = document.documentElement.scrollTop || document.body.scrollTop;
-        if (document.documentElement.clientWidth > 300) {
-            var scrollPerc = document.body.scrollHeight * .50;
-        } else {
-            var scrollPerc = document.body.scrollHeight * .85;
-        }
-        
-        var popBox = document.getElementById("suggest_box");
-        if (scrollSpot > scrollPerc) {
-            show();
-        } else {
-            hide();
-        }
-    };
+            setTimeout(function(){
+                // When the animation is done, we can remove this class:
+                popBox.className = popBox.className.replace(/(^|\b)animating(\b|$)/, ' ');
+            }, 500);
+        };
+        var show = function() {
+            popBox.className += ' show animating';
+        };
+
+        var scrollHandler = function() {
+            if (document.documentElement.clientWidth > 300) {
+                var scrollPerc = document.body.scrollHeight * .50;
+            } else {
+                var scrollPerc = document.body.scrollHeight * .85;
+            }
             
-    document.querySelector("#suggest_box button").onclick = hide;
-})();
+            if (document.documentElement.scrollTop > scrollPerc) {
+                show();
+            } else {
+                hide();
+            }
+        };
+
+        document.addEventListener('scroll', scrollHandler)
+                
+        document.querySelector("#suggest_box button").addEventListener('click', hide);
+    });
+}
