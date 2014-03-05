@@ -9,42 +9,14 @@
             var scrollPerc = document.body.scrollHeight * .85;
         }
         
+        var popBox = document.getElementById("suggest_box");
         if (scrollSpot > scrollPerc) {
-            
-            if (!appended){
-                var popBox = document.getElementById("suggest_box");
-                var x = 0;
-                
-                function slowLoop1(){
-                    if (x < 10){
-                        popBox.style.opacity = x * 0.1;      
-                        x++;
-                        setTimeout(slowLoop1, 50);
-                    }
-                }
-                slowLoop1();
-                
-                appended = true;
-            }
+            popBox.className += ' show';
         } else {
-            if (appended) {
-                var popBox = document.getElementById("suggest_box");
-                var x = 10;
-                
-                function slowLoop2(){
-                    if (x > -1){
-                        popBox.style.opacity = x * 0.1;      
-                        x--;
-                        setTimeout(slowLoop2, 50);
-                    }
-                }
-                slowLoop2();
-                
-                appended = false;
-            }
+            popBox.className = popBox.className.replace(/(^|\b)show(\b|$)/, ' ');
         }
     };
-    
+            
     
     var closeMe = document.getElementsByTagName("button");
     closeMe[0].onclick = function () {
