@@ -1,16 +1,16 @@
 (function(){
     
     var appended = false;
-    var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
     var onscroll = function() {
         var scrollSpot = document.documentElement.scrollTop || document.body.scrollTop;
-        if (w > 300) {
-            var scrollPerc = document.body.scrollHeight*.50;
+        if (document.documentElement.clientWidth > 300) {
+            var scrollPerc = document.body.scrollHeight * .50;
         } else {
-            var scrollPerc = document.body.scrollHeight*.85;
+            var scrollPerc = document.body.scrollHeight * .85;
         }
         
         if (scrollSpot > scrollPerc) {
+            
             if (!appended){
                 var popBox = document.getElementById("suggest_box");
                 var x = 0;
